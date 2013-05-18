@@ -1,0 +1,30 @@
+﻿@using EnumSelectListMvcHelpers.Helpers.ExtensionMethods
+@using EnumSelectListMvcHelpers.Models
+@model EnumSelectListMvcHelpers.Models.HomeIndexViewModel
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Enum testing</title>
+	</head>
+	<body>
+		<div>
+			@using (Html.BeginForm())
+			{
+				<p>@Html.DropDownListFor(model => model.BankBalanceState, Model.BankBalanceState.ToSelectList())</p>
+	   
+				<p>@Html.DropDownListFor(model => model.BankBalanceState, Model.BankBalanceState.ToSelectList( x => x != UserType.LapsedNonDepositor &&
+																													x != UserType.LapsedRegular))</p>
+
+				<p>@Html.DropDownListFor(model => model.BankBalanceState, Model.BankBalanceState.ToSelectList(addPleaseSelect: true))</p>
+	   
+				<p>@Html.DropDownListFor(model => model.BankBalanceState, Model.BankBalanceState.ToSelectList(shuffleList: true))</p>
+			}
+		</div>
+	</body>
+</html>
